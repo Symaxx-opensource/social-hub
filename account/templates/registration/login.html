@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% include "header.html" %}
+
+<form action="" method="post">
+
+
+    {% if form.errors %}
+        <p>
+            Your username and password didn't match.
+            Please try again.
+        </p>
+    {% else %}
+        <p>Please, use the following form to log-in:</p>
+    {% endif %}
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="submit" value="Submit">
+
+</form>
+
+
+{% endblock content %}
